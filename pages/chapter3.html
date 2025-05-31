@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Change 'en' to your story's primary language -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kung Fu Panda 2</title>
+    <link rel="icon" href="../img/logo/dreamworks-32x32.png">
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body id="vanta">
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Main Navigation -->
+        
+        <nav class="main-nav">
+            <div class="nav-content">
+                 <a href="https://www.dreamworks.com" target="_blank" aria-label="DreamWorks">
+                    <!-- Image Link Used https://logotyp.us/logo/dreamworks/-->
+                    <img loading="lazy" src="../img/logo/dreamworks.png" alt="DreamWorks Logo" class="dw-logo">
+                </a>
+
+                <ul>
+                    <!-- Add your story chapter/section links here -->
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="chapter1.html">Chapter</a></li>
+                    <!-- Add more chapters as needed -->
+                </ul>
+            </div>
+        </nav>
+
+        <div id="animated-bg"></div>
+
+        <!-- Main Story Content -->
+        <div id="chapter-content">
+            <!-- Chapter 3 -->
+            <section id="chapter3" class="chapter">
+                <h2>Chapter 3: Trouble in Gongmen City</h2>
+                <!-- Add more story content here -->
+                <div class="story-content">
+                    <p>Gongmen City is attacked by Shen’s army. A secret weapon threatens all of China. Po and the Furious Five are sent to stop it and protect the city’s future.</p>
+                    
+                    <!-- Example of an image with caption -->
+                    <figure class="story-image">
+                        <img src="../img/chapter-3.jpg" alt="Descriptive text here" width="800" height="400">
+                        <figcaption>Gongmen City under fireworks and attack</figcaption>
+                        <figcaption class="copyright">Image from <em>Kung Fu Panda 2</em> (DreamWorks Animation, 2011). Used for educational purposes.</figcaption>
+                    </figure>
+                </div>
+
+                <!-- Interactive Elements -->
+                <div class="interactive-element">
+                    <a id="previousBtn" class="choice-btn2" data-chapter="2" href="chapter2.html">Previous Chapter</a>
+                    <a id="nextBtn" class="choice-btn2" data-chapter="4" href="chapter4.html">Next Chapter</a>
+                </div>
+            </section>
+        </div>
+        
+    </main>
+
+    <!-- Story Footer -->
+    <footer class="story-footer">
+        <div class="social-network">
+            <ul class="network-list">
+                <li class="network">
+                    <a class="twitter" href="https://twitter.com/DreamWorks"  target="_blank" aria-label="Twitter">
+                        <i class="fa-brands fa-square-x-twitter" style="color: #000000;"></i>
+                    </a>
+                </li>
+                <li class="network">
+                    <a href="https://www.facebook.com/DreamWorks" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f" style="color: #1877F2;"></i>
+                    </a>
+                </li>
+                <li class="network">
+                    <a href="https://www.youtube.com/channel/UCY26xU0-avwTJ6F6TzUZVEw" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube" style="color: #CD201F;"></i>
+                    </a>
+                </li>
+                <li class="network">
+                    <a href="https://www.instagram.com/DreamWorks" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram" style="color: #E1306C;"></i>
+                    </a>
+                </li>
+                <li class="network">
+                    <a href="https://www.tiktok.com/@dreamworks" target="_blank" aria-label="TikTok">
+                        <i class="fab fa-tiktok" style="color: #000000;"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>© 2025 Lucas & Daniel | A Digital Storytelling Project on <strong>Kung Fu Panda 2</strong></p>
+        <p>All rights to Kung Fu Panda 2 belong to DreamWorks Animation. This site is for educational purposes only.</p>
+        
+        <div class="story-controls">
+            <button id="previousBtn"></button>
+            <button id="nextBtn"></button>
+        </div>
+    </footer>
+
+    <!-- Link to your JavaScript file -->
+	<script src="../vantajs/three.min.js"></script>
+    <script src="../vantajs/vanta.clouds.min.js"></script>
+
+    <script>
+        class BackgroundImageAnimator {
+            constructor(divId, imagePaths, interval = 5000) {
+                this.div = document.getElementById(divId);
+                if (!this.div) {
+                    console.error(`Div with ID "${divId}" not found.`);
+                    return;
+                }
+
+                this.originalImages = [...imagePaths];
+                this.images = imagePaths;
+                this.currentIndex = 0;
+                this.interval = interval;
+                
+                this.preloadImages().then(() => {
+                    this.startAnimation();
+                });
+            }
+
+            preloadImages() {
+                const promises = this.images.map(src => {
+                    return new Promise((resolve) => {
+                        const img = new Image();
+                        img.src = src;
+                        img.onload = () => resolve();
+                        img.onerror = () => {
+                            console.warn("Image failed to load:", src);
+                            resolve(); // Don't block on failure
+                        };
+                    });
+                });
+
+                return Promise.all(promises);
+            }
+
+            startAnimation() {
+                const setImage = () => {
+                    const currentSrc = this.images[this.currentIndex];
+                    const img = new Image();
+                    img.src = currentSrc;
+
+                    img.onload = () => {
+                        this.div.style.backgroundImage = `url('${currentSrc}')`;
+                    };
+
+                    img.onerror = () => {
+                        console.warn("Failed to load during animation:", currentSrc);
+                        this.div.style.backgroundImage = `url('${this.backupImage}')`;
+                    };
+                };
+
+                setImage(); // Initial set
+
+                setInterval(() => {
+                    this.currentIndex++;
+
+                    if (this.currentIndex >= this.images.length) {
+                        const lastImage = this.images[this.images.length - 1];
+                        let newShuffle;
+                        do {
+                            newShuffle = shuffleArray([...this.originalImages]);
+                        } while (newShuffle[0] === lastImage);
+
+                        this.images = newShuffle;
+                        this.currentIndex = 0;
+                    }
+
+                    setImage();
+                }, this.interval);
+            }
+        }
+
+        function shuffleArray(array) {
+            const result = [...array];
+            for (let i = result.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [result[i], result[j]] = [result[j], result[i]];
+            }
+            return result;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                const randomizedImages = shuffleArray([
+                    "../img/Imdb/kung-fu-panda-3-thumbnail.jpg",
+                    "../img/Imdb/The-Furious-Five-Thumbnail-2.jpg",
+                    "../img/Imdb/The-Furious-Five-Thumbnail-3.jpg",
+                    "../img/TheFuriousFive/kung-fu-panda-2-scroll.jpg",
+                    "../img/TheFuriousFive/kung-fu-panda-leaping-with-the-furious-five.jpg",
+                    "../img/Imdb/kung-fu-panda-4-about-mobile2.jpg",
+                    "../img/Imdb/Master-Shifu-Praying-Infront-Po.jpg"
+                ]);
+
+                const animator = new BackgroundImageAnimator("animated-bg", randomizedImages);
+            } catch (error) {
+                console.error("Error occurred while setting background images:", error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+/* Navigation */
+.main-nav .nav-content .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.main-nav .nav-content .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Logo */
+.main-nav .story-header .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.main-nav .story-header .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Second Content */
+.second-content .hero-content .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.second-content .hero-content .blur-load.loaded {
+    filter: blur(0);
+}
+
+.character-item .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.character-item .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Voice Actor */
+.voice-actor-container .item .image-row .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.voice-actor-container .item .image-row .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Music Soundtrack */
+.music-container .music-player .player-img .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.music-container .music-player .player-img .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Martial Art */
+.martial-container .martial-cards .card .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.martial-container .martial-cards .card .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Video Game */
+.video-game-container .game-cards .game-card .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.video-game-container .game-cards .game-card .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Gallery Slider */
+.slider .item .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.slider .item .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Kung Fu Panda 3 & 4 Gallery */
+.gallery .card .card-item .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.gallery .card .card-item .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* DreamWorks */
+.dreamworks-container .movies .movie-grid .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.dreamworks-container .movies .movie-grid .blur-load.loaded {
+    filter: blur(0);
+}
+
+/* Chapter Content */
+.chapter-content .chapter .story-content .story-image .blur-load {
+    filter: blur(20px);
+    transition: filter 0.5s ease;
+}
+
+.chapter-content .chapter .story-content .story-image .blur-load.loaded {
+    filter:blur(0);
+}
